@@ -1,0 +1,39 @@
+entity Peregrinos {
+  numeroEspecial Integer,
+  apellido String required,
+  nombre String required,
+  numeroDocumento String,
+  telefono String,
+  mayorMenor TipoPersona required,  // Enum
+  salida TipoSalida required,  // Enum
+  PAGO Integer,
+  formaPago TipoFormaPago required,   // Enum
+  aclaraciones String,
+  completoFormulario Boolean,
+}
+
+enum TipoSalida {
+  LINIERS,
+  RODRIGUEZ,
+  LA REJA
+}
+
+enum TipoPersona {
+  MAYOR,
+  MENOR
+}
+
+enum TipoFormaPago {
+  EFECTIVO,
+  TRANSFERENCIA,
+  TARJETA,
+  OTRO
+}
+
+// ===============================
+// Ajustes agregados para filtros
+// ===============================
+service all with serviceClass    // ya lo tenías, necesario para Criteria
+dto all with mapstruct           // mapeo DTO
+paginate all with pagination     // paginación automática
+filter Peregrinos
