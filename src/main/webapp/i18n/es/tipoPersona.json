@@ -1,0 +1,9 @@
+{
+  "lujan2App": {
+    "TipoPersona": {
+      "null": "",
+      "MAYOR": "MAYOR",
+      "MENOR": "MENOR"
+    }
+  }
+}

@@ -815,8 +815,8 @@
             <properties>
                 <!-- default Spring profiles -->
                 <liquibase-plugin.password/>
-                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/lujan2</liquibase-plugin.url>
-                <liquibase-plugin.username>lujan2</liquibase-plugin.username>
+                <liquibase-plugin.url>jdbc:postgresql://localhost:5433/lujan2</liquibase-plugin.url>
+                <liquibase-plugin.username>dp</liquibase-plugin.username>
                 <profile.test>test,testdev</profile.test>
                 <spring.profiles.active>dev${profile.tls}${profile.no-liquibase}</spring.profiles.active>
             </properties>

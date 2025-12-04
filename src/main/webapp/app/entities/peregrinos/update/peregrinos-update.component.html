@@ -1,0 +1,176 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-peregrinos-heading" data-cy="PeregrinosCreateUpdateHeading" jhiTranslate="lujan2App.peregrinos.home.createOrEditLabel">
+        Crear o editar Peregrinos
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lujan2App.peregrinos.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numeroEspecial" jhiTranslate="lujan2App.peregrinos.numeroEspecial">Numero Especial</label>
+          <input
+            type="number"
+            class="form-control"
+            name="numeroEspecial"
+            id="field_numeroEspecial"
+            data-cy="numeroEspecial"
+            formControlName="numeroEspecial"
+          />
+        </div>
+
+        @let apellidoRef = editForm.get('apellido')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_apellido" jhiTranslate="lujan2App.peregrinos.apellido">Apellido</label>
+          <input type="text" class="form-control" name="apellido" id="field_apellido" data-cy="apellido" formControlName="apellido" />
+          @if (apellidoRef.invalid && (apellidoRef.dirty || apellidoRef.touched)) {
+            <div>
+              @if (editForm.get('apellido')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let nombreRef = editForm.get('nombre')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="lujan2App.peregrinos.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          @if (nombreRef.invalid && (nombreRef.dirty || nombreRef.touched)) {
+            <div>
+              @if (editForm.get('nombre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numeroDocumento" jhiTranslate="lujan2App.peregrinos.numeroDocumento">Numero Documento</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroDocumento"
+            id="field_numeroDocumento"
+            data-cy="numeroDocumento"
+            formControlName="numeroDocumento"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telefono" jhiTranslate="lujan2App.peregrinos.telefono">Telefono</label>
+          <input type="text" class="form-control" name="telefono" id="field_telefono" data-cy="telefono" formControlName="telefono" />
+        </div>
+
+        @let mayorMenorRef = editForm.get('mayorMenor')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_mayorMenor" jhiTranslate="lujan2App.peregrinos.mayorMenor">Mayor Menor</label>
+          <select class="form-control" name="mayorMenor" formControlName="mayorMenor" id="field_mayorMenor" data-cy="mayorMenor">
+            <option [ngValue]="null">{{ 'lujan2App.TipoPersona.null' | translate }}</option>
+            @for (tipoPersona of tipoPersonaValues; track $index) {
+              <option [value]="tipoPersona">{{ 'lujan2App.TipoPersona.' + tipoPersona | translate }}</option>
+            }
+          </select>
+          @if (mayorMenorRef.invalid && (mayorMenorRef.dirty || mayorMenorRef.touched)) {
+            <div>
+              @if (editForm.get('mayorMenor')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let salidaRef = editForm.get('salida')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_salida" jhiTranslate="lujan2App.peregrinos.salida">Salida</label>
+          <select class="form-control" name="salida" formControlName="salida" id="field_salida" data-cy="salida">
+            <option [ngValue]="null">{{ 'lujan2App.TipoSalida.null' | translate }}</option>
+            @for (tipoSalida of tipoSalidaValues; track $index) {
+              <option [value]="tipoSalida">{{ 'lujan2App.TipoSalida.' + tipoSalida | translate }}</option>
+            }
+          </select>
+          @if (salidaRef.invalid && (salidaRef.dirty || salidaRef.touched)) {
+            <div>
+              @if (editForm.get('salida')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pago" jhiTranslate="lujan2App.peregrinos.pago">PAGO</label>
+          <input type="number" class="form-control" name="pago" id="field_pago" data-cy="pago" formControlName="pago" />
+        </div>
+
+        @let formaPagoRef = editForm.get('formaPago')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_formaPago" jhiTranslate="lujan2App.peregrinos.formaPago">Forma Pago</label>
+          <select class="form-control" name="formaPago" formControlName="formaPago" id="field_formaPago" data-cy="formaPago">
+            <option [ngValue]="null">{{ 'lujan2App.TipoFormaPago.null' | translate }}</option>
+            @for (tipoFormaPago of tipoFormaPagoValues; track $index) {
+              <option [value]="tipoFormaPago">{{ 'lujan2App.TipoFormaPago.' + tipoFormaPago | translate }}</option>
+            }
+          </select>
+          @if (formaPagoRef.invalid && (formaPagoRef.dirty || formaPagoRef.touched)) {
+            <div>
+              @if (editForm.get('formaPago')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_aclaraciones" jhiTranslate="lujan2App.peregrinos.aclaraciones">Aclaraciones</label>
+          <input
+            type="text"
+            class="form-control"
+            name="aclaraciones"
+            id="field_aclaraciones"
+            data-cy="aclaraciones"
+            formControlName="aclaraciones"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_completoFormulario" jhiTranslate="lujan2App.peregrinos.completoFormulario"
+            >Completo Formulario</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="completoFormulario"
+            id="field_completoFormulario"
+            data-cy="completoFormulario"
+            formControlName="completoFormulario"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

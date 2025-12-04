@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (peregrinos(); as peregrinosRef) {
+      <div>
+        <h2 data-cy="peregrinosDetailsHeading"><span jhiTranslate="lujan2App.peregrinos.detail.title">Peregrinos</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.numeroEspecial">Numero Especial</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.numeroEspecial }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.apellido">Apellido</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.apellido }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.numeroDocumento">Numero Documento</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.numeroDocumento }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.telefono">Telefono</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.telefono }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.mayorMenor">Mayor Menor</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lujan2App.TipoPersona.' + (peregrinosRef.mayorMenor ?? 'null')">{{
+              { null: '', MAYOR: 'MAYOR', MENOR: 'MENOR' }[peregrinosRef.mayorMenor ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.salida">Salida</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lujan2App.TipoSalida.' + (peregrinosRef.salida ?? 'null')">{{
+              { null: '', LINIERS: 'LINIERS', RODRIGUEZ: 'RODRIGUEZ', LA_REJA: 'LA REJA' }[peregrinosRef.salida ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.pago">PAGO</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.pago }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.formaPago">Forma Pago</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lujan2App.TipoFormaPago.' + (peregrinosRef.formaPago ?? 'null')">{{
+              { null: '', EFECTIVO: 'EFECTIVO', TRANSFERENCIA: 'TRANSFERENCIA', TARJETA: 'TARJETA', OTRO: 'OTRO' }[
+                peregrinosRef.formaPago ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.aclaraciones">Aclaraciones</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.aclaraciones }}</span>
+          </dd>
+          <dt><span jhiTranslate="lujan2App.peregrinos.completoFormulario">Completo Formulario</span></dt>
+          <dd>
+            <span>{{ peregrinosRef.completoFormulario }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/peregrinos', peregrinosRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

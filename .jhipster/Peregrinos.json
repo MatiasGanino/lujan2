@@ -1,0 +1,67 @@
+{
+  "annotations": {
+    "changelogDate": "20251204193507"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "numeroEspecial",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numeroDocumento",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mayorMenor",
+      "fieldType": "TipoPersona",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MAYOR,MENOR"
+    },
+    {
+      "fieldName": "salida",
+      "fieldType": "TipoSalida",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "LINIERS,RODRIGUEZ,LA,REJA"
+    },
+    {
+      "fieldName": "pago",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "formaPago",
+      "fieldType": "TipoFormaPago",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "EFECTIVO,TRANSFERENCIA,TARJETA,OTRO"
+    },
+    {
+      "fieldName": "aclaraciones",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "completoFormulario",
+      "fieldType": "Boolean"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Peregrinos",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,9 @@
+export enum TipoFormaPago {
+  EFECTIVO = 'EFECTIVO',
+
+  TRANSFERENCIA = 'TRANSFERENCIA',
+
+  TARJETA = 'TARJETA',
+
+  OTRO = 'OTRO',
+}

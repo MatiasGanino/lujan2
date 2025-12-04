@@ -1,0 +1,11 @@
+{
+  "lujan2App": {
+    "TipoFormaPago": {
+      "null": "",
+      "EFECTIVO": "EFECTIVO",
+      "TRANSFERENCIA": "TRANSFERENCIA",
+      "TARJETA": "TARJETA",
+      "OTRO": "OTRO"
+    }
+  }
+}

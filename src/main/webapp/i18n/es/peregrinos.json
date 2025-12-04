@@ -1,0 +1,34 @@
+{
+  "lujan2App": {
+    "peregrinos": {
+      "home": {
+        "title": "Peregrinos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Peregrinos",
+        "createOrEditLabel": "Crear o editar Peregrinos",
+        "notFound": "Ningún Peregrinos encontrado"
+      },
+      "created": "Un nuevo Peregrinos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Peregrinos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Peregrinos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Peregrinos {{ id }}?"
+      },
+      "detail": {
+        "title": "Peregrinos"
+      },
+      "id": "ID",
+      "numeroEspecial": "Numero Especial",
+      "apellido": "Apellido",
+      "nombre": "Nombre",
+      "numeroDocumento": "Numero Documento",
+      "telefono": "Telefono",
+      "mayorMenor": "Mayor Menor",
+      "salida": "Salida",
+      "pago": "Pago",
+      "formaPago": "Forma Pago",
+      "aclaraciones": "Aclaraciones",
+      "completoFormulario": "Completo Formulario"
+    }
+  }
+}
