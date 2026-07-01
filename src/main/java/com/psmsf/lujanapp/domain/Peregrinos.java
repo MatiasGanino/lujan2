@@ -6,6 +6,7 @@ import com.psmsf.lujanapp.domain.enumeration.TipoSalida;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * A Peregrinos.
@@ -61,8 +62,11 @@ public class Peregrinos implements Serializable {
     @Column(name = "aclaraciones")
     private String aclaraciones;
 
-    @Column(name = "completo_formulario")
-    private Boolean completoFormulario;
+    @Column(name = "fecha_inscripcion")
+    private Instant fechaInscripcion;
+
+    @Column(name = "payment_id")
+    private String paymentId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -209,17 +213,30 @@ public class Peregrinos implements Serializable {
         this.aclaraciones = aclaraciones;
     }
 
-    public Boolean getCompletoFormulario() {
-        return this.completoFormulario;
+    public Instant getFechaInscripcion() {
+        return fechaInscripcion;
     }
 
-    public Peregrinos completoFormulario(Boolean completoFormulario) {
-        this.setCompletoFormulario(completoFormulario);
+    public Peregrinos fechaInscripcion(Instant fechaInscripcion) {
+        this.setFechaInscripcion(fechaInscripcion);
         return this;
     }
 
-    public void setCompletoFormulario(Boolean completoFormulario) {
-        this.completoFormulario = completoFormulario;
+    public void setFechaInscripcion(Instant fechaInscripcion) {
+        this.fechaInscripcion = fechaInscripcion;
+    }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public Peregrinos paymentId(String paymentId) {
+        this.setPaymentId(paymentId);
+        return this;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -256,7 +273,8 @@ public class Peregrinos implements Serializable {
             ", pago=" + getPago() +
             ", formaPago='" + getFormaPago() + "'" +
             ", aclaraciones='" + getAclaraciones() + "'" +
-            ", completoFormulario='" + getCompletoFormulario() + "'" +
+            ", fechaInscripcion='" + getFechaInscripcion() + "'" +
+            ", paymentId='" + getPaymentId() + "'" +
             "}";
     }
 }

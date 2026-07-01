@@ -1,11 +1,11 @@
-id;numero_especial;apellido;nombre;numero_documento;telefono;mayor_menor;salida;p_ago;forma_pago;aclaraciones;completo_formulario
-1;4417;vivaciously repeatedly;sundae part underneath;sedately;weight;MAYOR;LA;16495;EFECTIVO;intensely times;false
-2;20178;grizzled;till and;phew;sleepily;MENOR;REJA;10658;EFECTIVO;decriminalize;false
-3;8031;catch moor depart;delete aw sunder;absent gosh blissfully;unless gladly while;MENOR;LINIERS;12184;TRANSFERENCIA;yak;false
-4;1040;gah arcade amidst;above times swat;severe unless geez;moment;MENOR;RODRIGUEZ;27807;TARJETA;creative;false
-5;7524;experience phew;mask ugh up;event;misjudge shadowy;MENOR;LA;28248;TRANSFERENCIA;gadzooks what;false
-6;10371;sweatshop quickly;hm bashfully;briskly;almost of minus;MAYOR;REJA;31787;TRANSFERENCIA;like;false
-7;954;gosh;soybean;next yahoo pish;uh-huh graceful;MAYOR;RODRIGUEZ;6594;TRANSFERENCIA;abaft;true
-8;28458;exaggerate extricate;before after;worth alongside per;meh;MENOR;RODRIGUEZ;27997;TRANSFERENCIA;unless out;false
-9;16650;minus however since;owlishly fat inside;and likewise;anticodon;MENOR;LINIERS;3453;EFECTIVO;lest march pish;false
-10;19662;although hornet ditch;joyfully striking;except to;importance;MENOR;LINIERS;12517;TARJETA;whistle amidst;false
+id;numero_especial;apellido;nombre;numero_documento;telefono;mayor_menor;salida;p_ago;forma_pago;aclaraciones;completo_formulario;email;contacto_emergencia;telefono_emergencia;fecha_inscripcion
+1;4417;vivaciously repeatedly;sundae part underneath;sedately;weight;MAYOR;LA_REJA;16495;EFECTIVO;intensely times;false;martin.gomez@example.com;Laura Gómez;1134567890;2026-06-01 09:15:00
+2;20178;grizzled;till and;phew;sleepily;MENOR;LA_REJA;10658;EFECTIVO;decriminalize;false;sofia.perez@example.com;Carlos Pérez;1145678901;2026-06-02 10:30:00
+3;8031;catch moor depart;delete aw sunder;absent gosh blissfully;unless gladly while;MENOR;LINIERS;12184;TRANSFERENCIA;yak;false;lucas.fernandez@example.com;María Fernández;1156789012;2026-06-03 11:45:00
+4;1040;gah arcade amidst;above times swat;severe unless geez;moment;MENOR;RODRIGUEZ;27807;TARJETA;creative;false;valentina.lopez@example.com;José López;1167890123;2026-06-04 12:00:00
+5;7524;experience phew;mask ugh up;event;misjudge shadowy;MENOR;LA_REJA;28248;TRANSFERENCIA;gadzooks what;false;agustin.sosa@example.com;Ana Sosa;1178901234;2026-06-05 13:20:00
+6;10371;sweatshop quickly;hm bashfully;briskly;almost of minus;MAYOR;LA_REJA;31787;TRANSFERENCIA;like;false;camila.romero@example.com;Miguel Romero;1189012345;2026-06-06 14:10:00
+7;954;gosh;soybean;next yahoo pish;uh-huh graceful;MAYOR;RODRIGUEZ;6594;TRANSFERENCIA;abaft;true;nicolas.diaz@example.com;Silvia Díaz;1190123456;2026-06-07 15:05:00
+8;28458;exaggerate extricate;before after;worth alongside per;meh;MENOR;RODRIGUEZ;27997;TRANSFERENCIA;unless out;false;julieta.torres@example.com;Pedro Torres;1101234567;2026-06-08 16:40:00
+9;16650;minus however since;owlishly fat inside;and likewise;anticodon;MENOR;LINIERS;3453;EFECTIVO;lest march pish;false;franco.medina@example.com;Claudia Medina;1112345678;2026-06-09 17:25:00
+10;19662;although hornet ditch;joyfully striking;except to;importance;MENOR;LINIERS;12517;TARJETA;whistle amidst;false;maria.ruiz@example.com;Roberto Ruiz;1123456789;2026-06-10 18:00:00

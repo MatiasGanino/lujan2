@@ -82,8 +82,7 @@ public class PeregrinosQueryService extends QueryService<Peregrinos> {
                 buildSpecification(criteria.getSalida(), Peregrinos_.salida),
                 buildRangeSpecification(criteria.getPago(), Peregrinos_.pago),
                 buildSpecification(criteria.getFormaPago(), Peregrinos_.formaPago),
-                buildStringSpecification(criteria.getAclaraciones(), Peregrinos_.aclaraciones),
-                buildSpecification(criteria.getCompletoFormulario(), Peregrinos_.completoFormulario)
+                buildStringSpecification(criteria.getAclaraciones(), Peregrinos_.aclaraciones)
             );
         }
         return specification;

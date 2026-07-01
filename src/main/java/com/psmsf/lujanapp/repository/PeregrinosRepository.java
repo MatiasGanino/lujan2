@@ -4,9 +4,15 @@ import com.psmsf.lujanapp.domain.Peregrinos;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * Spring Data JPA repository for the Peregrinos entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface PeregrinosRepository extends JpaRepository<Peregrinos, Long>, JpaSpecificationExecutor<Peregrinos> {}
+public interface PeregrinosRepository extends JpaRepository<Peregrinos, Long>, JpaSpecificationExecutor<Peregrinos> {
+
+    Optional<Peregrinos> findByPaymentId(String paymentId);
+
+}

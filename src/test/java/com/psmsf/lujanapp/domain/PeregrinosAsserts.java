@@ -56,8 +56,7 @@ public class PeregrinosAsserts {
             .satisfies(a -> assertThat(a.getSalida()).as("check salida").isEqualTo(expected.getSalida()))
             .satisfies(a -> assertThat(a.getPago()).as("check pago").isEqualTo(expected.getPago()))
             .satisfies(a -> assertThat(a.getFormaPago()).as("check formaPago").isEqualTo(expected.getFormaPago()))
-            .satisfies(a -> assertThat(a.getAclaraciones()).as("check aclaraciones").isEqualTo(expected.getAclaraciones()))
-            .satisfies(a -> assertThat(a.getCompletoFormulario()).as("check completoFormulario").isEqualTo(expected.getCompletoFormulario())
+            .satisfies(a -> assertThat(a.getAclaraciones()).as("check aclaraciones").isEqualTo(expected.getAclaraciones())
             );
     }
 

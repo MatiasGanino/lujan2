@@ -32,9 +32,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5433/lujan2
-    username: dp
-    password: dp
+    url: jdbc:postgresql://localhost:5432/lujan2
+    username: portal
+    password: portal
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -68,7 +68,7 @@ jhipster:
     # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
     allowed-origins: 'http://localhost:8100,https://localhost:8100,http://localhost:9000,https://localhost:9000,http://localhost:4200,https://localhost:4200'
     # Enable CORS when running in GitHub Codespaces
-    allowed-origin-patterns: 'https://*.githubpreview.dev'
+    allowed-origin-patterns: 'https://*.githubpreview.dev,https://*.ngrok-free.app'
     allowed-methods: '*'
     allowed-headers: '*'
     exposed-headers: 'Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params'
@@ -97,3 +97,9 @@ jhipster:
 # ===================================================================
 
 # application:
+mercadopago:
+  access-token: APP_USR-7609685818736662-063009-42929aa36001a84bf2c75c9601795a78-3508293998
+  back-url-success: https://ngrok-free.app
+  back-url-failure: https://ngrok-free.app
+  back-url-pending: https://ngrok-free.app
+  # webhook-secret: (opcional, para verificar firma del webhook en producción)

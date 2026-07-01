@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./peregrinos/peregrinos.routes'),
   },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
+  {
+    path: 'ingreso',
+    loadChildren: () => import('./ingresos/ingreso.routes').then(m => m.default),
+  },
 ];
 
 export default routes;

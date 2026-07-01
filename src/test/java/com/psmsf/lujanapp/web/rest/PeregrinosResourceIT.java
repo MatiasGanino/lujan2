@@ -115,8 +115,7 @@ class PeregrinosResourceIT {
             .salida(DEFAULT_SALIDA)
             .pago(DEFAULT_P_AGO)
             .formaPago(DEFAULT_FORMA_PAGO)
-            .aclaraciones(DEFAULT_ACLARACIONES)
-            .completoFormulario(DEFAULT_COMPLETO_FORMULARIO);
+            .aclaraciones(DEFAULT_ACLARACIONES);
     }
 
     /**
@@ -136,8 +135,7 @@ class PeregrinosResourceIT {
             .salida(UPDATED_SALIDA)
             .pago(UPDATED_P_AGO)
             .formaPago(UPDATED_FORMA_PAGO)
-            .aclaraciones(UPDATED_ACLARACIONES)
-            .completoFormulario(UPDATED_COMPLETO_FORMULARIO);
+            .aclaraciones(UPDATED_ACLARACIONES);
     }
 
     @BeforeEach
@@ -981,8 +979,7 @@ class PeregrinosResourceIT {
             .salida(UPDATED_SALIDA)
             .pago(UPDATED_P_AGO)
             .formaPago(UPDATED_FORMA_PAGO)
-            .aclaraciones(UPDATED_ACLARACIONES)
-            .completoFormulario(UPDATED_COMPLETO_FORMULARIO);
+            .aclaraciones(UPDATED_ACLARACIONES);
         PeregrinosDTO peregrinosDTO = peregrinosMapper.toDto(updatedPeregrinos);
 
         restPeregrinosMockMvc
@@ -1080,8 +1077,7 @@ class PeregrinosResourceIT {
             .telefono(UPDATED_TELEFONO)
             .salida(UPDATED_SALIDA)
             .formaPago(UPDATED_FORMA_PAGO)
-            .aclaraciones(UPDATED_ACLARACIONES)
-            .completoFormulario(UPDATED_COMPLETO_FORMULARIO);
+            .aclaraciones(UPDATED_ACLARACIONES);
 
         restPeregrinosMockMvc
             .perform(
@@ -1123,8 +1119,7 @@ class PeregrinosResourceIT {
             .salida(UPDATED_SALIDA)
             .pago(UPDATED_P_AGO)
             .formaPago(UPDATED_FORMA_PAGO)
-            .aclaraciones(UPDATED_ACLARACIONES)
-            .completoFormulario(UPDATED_COMPLETO_FORMULARIO);
+            .aclaraciones(UPDATED_ACLARACIONES);
 
         restPeregrinosMockMvc
             .perform(

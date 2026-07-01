@@ -1,0 +1,356 @@
+<div class="ingreso-publico-wrapper">
+  <!-- Header con identidad visual -->
+  <div class="ingreso-header">
+    <div class="paso-indicator">
+      <span class="paso-actual">Paso 1</span>
+      <span class="paso-sep">/</span>
+      <span class="paso-total">3</span>
+    </div>
+    <h1 class="ingreso-titulo">Inscripción a la Peregrinación</h1>
+    <p class="ingreso-subtitulo">Completá tus datos para reservar tu lugar</p>
+    <div class="progreso-barra">
+      <div class="progreso-fill" style="width: 33%"></div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center px-3">
+    <div class="col-12 col-md-8 col-lg-6">
+      <form novalidate (ngSubmit)="submit()" [formGroup]="ingresoForm">
+
+        <!-- SECCIÓN 1: Datos personales -->
+        <div class="seccion-card">
+          <div class="seccion-encabezado">
+            <span class="seccion-icono">👤</span>
+            <h2 class="seccion-titulo">Datos Personales</h2>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label campo-requerido" for="field_apellido">Apellido</label>
+            <input
+              type="text"
+              class="form-control"
+              id="field_apellido"
+              formControlName="apellido"
+              placeholder="Tu apellido"
+              [class.is-invalid]="isFieldInvalid('apellido')"
+            />
+            @if (isFieldInvalid('apellido')) {
+              <div class="invalid-feedback">
+                @if (hasError('apellido', 'required')) { Este campo es obligatorio. }
+                @if (hasError('apellido', 'maxlength')) { Máximo 255 caracteres. }
+              </div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label campo-requerido" for="field_nombre">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="field_nombre"
+              formControlName="nombre"
+              placeholder="Tu nombre"
+              [class.is-invalid]="isFieldInvalid('nombre')"
+            />
+            @if (isFieldInvalid('nombre')) {
+              <div class="invalid-feedback">
+                @if (hasError('nombre', 'required')) { Este campo es obligatorio. }
+              </div>
+            }
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="field_numeroDocumento">DNI / Documento</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_numeroDocumento"
+                formControlName="numeroDocumento"
+                placeholder="Ej: 12345678"
+              />
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label campo-requerido" for="field_mayorMenor">Tipo de persona</label>
+              <select
+                class="form-select"
+                id="field_mayorMenor"
+                formControlName="mayorMenor"
+                [class.is-invalid]="isFieldInvalid('mayorMenor')"
+              >
+                <option [ngValue]="null">— Seleccioná —</option>
+                @for (tipo of tipoPersonaValues; track $index) {
+                  <option [value]="tipo">{{ tipo }}</option>
+                }
+              </select>
+              @if (isFieldInvalid('mayorMenor')) {
+                <div class="invalid-feedback">Este campo es obligatorio.</div>
+              }
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="field_telefono">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="field_telefono"
+                formControlName="telefono"
+                placeholder="Ej: 1123456789"
+              />
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="field_email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="field_email"
+                formControlName="email"
+                placeholder="tu@email.com"
+                [class.is-invalid]="isFieldInvalid('email')"
+              />
+              @if (isFieldInvalid('email')) {
+                <div class="invalid-feedback">Ingresá un email válido.</div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 2: Datos de la peregrinación -->
+        <div class="seccion-card">
+          <div class="seccion-encabezado">
+            <span class="seccion-icono">🚶</span>
+            <h2 class="seccion-titulo">Tu Lugar</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label campo-requerido" for="field_salida">Punto de salida</label>
+              <select
+                class="form-select"
+                id="field_salida"
+                formControlName="salida"
+                [class.is-invalid]="isFieldInvalid('salida')"
+              >
+                <option [ngValue]="null">— Seleccioná —</option>
+                @for (salida of tipoSalidaValues; track $index) {
+                  <option [value]="salida">{{ salida }}</option>
+                }
+              </select>
+              @if (isFieldInvalid('salida')) {
+                <div class="invalid-feedback">Este campo es obligatorio.</div>
+              }
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label campo-requerido" for="field_formaPago">Forma de pago</label>
+              <select
+                class="form-select"
+                id="field_formaPago"
+                formControlName="formaPago"
+                [class.is-invalid]="isFieldInvalid('formaPago')"
+              >
+                <option [ngValue]="null">— Seleccioná —</option>
+                @for (forma of tipoFormaPagoValues; track $index) {
+                  <option [value]="forma">{{ forma }}</option>
+                }
+              </select>
+              @if (isFieldInvalid('formaPago')) {
+                <div class="invalid-feedback">Este campo es obligatorio.</div>
+              }
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="field_aclaraciones">Aclaraciones (opcional)</label>
+            <textarea
+              class="form-control"
+              id="field_aclaraciones"
+              formControlName="aclaraciones"
+              rows="2"
+              placeholder="Alergias, necesidades especiales, etc."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 3: Contacto de emergencia -->
+        <div class="seccion-card">
+          <div class="seccion-encabezado">
+            <span class="seccion-icono">🆘</span>
+            <h2 class="seccion-titulo">Contacto de Emergencia</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="field_contactoEmergencia">Nombre y apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_contactoEmergencia"
+                formControlName="contactoEmergencia"
+                placeholder="Quién contactar en caso de emergencia"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="field_telefonoEmergencia">Teléfono de emergencia</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="field_telefonoEmergencia"
+                formControlName="telefonoEmergencia"
+                placeholder="Ej: 1187654321"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón siguiente -->
+        <div class="acciones-footer">
+          <button type="submit" class="btn btn-ingreso-primario btn-lg w-100">
+            Continuar a la autorización →
+          </button>
+          <p class="texto-privacidad">
+            🔒 Tus datos se usan únicamente para gestionar tu inscripción.
+          </p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ingreso-publico-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 60%);
+    padding-bottom: 3rem;
+  }
+
+  .ingreso-header {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 100%);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1.5rem 3rem;
+    margin-bottom: -1.5rem;
+  }
+
+  .paso-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .paso-actual { font-weight: 700; }
+  .paso-sep { opacity: 0.5; }
+
+  .ingreso-titulo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .ingreso-subtitulo {
+    opacity: 0.75;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .progreso-barra {
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .progreso-fill {
+    height: 100%;
+    background: #7ec8e3;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .seccion-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .seccion-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eef0f5;
+  }
+
+  .seccion-icono { font-size: 1.2rem; }
+
+  .seccion-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .campo-requerido::after {
+    content: " *";
+    color: #c0392b;
+  }
+
+  .acciones-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .btn-ingreso-primario {
+    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.85rem 2rem;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .btn-ingreso-primario:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    color: white;
+  }
+
+  .texto-privacidad {
+    font-size: 0.8rem;
+    color: #8a9ab5;
+    margin-top: 0.85rem;
+  }
+
+  .form-control, .form-select {
+    border-radius: 8px;
+    border: 1.5px solid #dde3ef;
+    transition: border-color 0.2s;
+  }
+
+  .form-control:focus, .form-select:focus {
+    border-color: #2d6a9f;
+    box-shadow: 0 0 0 3px rgba(45, 106, 159, 0.15);
+  }
+</style>

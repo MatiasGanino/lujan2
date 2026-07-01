@@ -35,7 +35,7 @@
             <column name="salida" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="p_ago" type="integer">
+            <column name="pago" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="forma_pago" type="varchar(255)">
@@ -44,9 +44,26 @@
             <column name="aclaraciones" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="completo_formulario" type="boolean">
-                <constraints nullable="true" />
-            </column>
+          <column name="email" type="varchar(255)">
+            <constraints nullable="true" />
+          </column>
+
+          <column name="contacto_emergencia" type="varchar(255)">
+            <constraints nullable="true" />
+          </column>
+
+          <column name="telefono_emergencia" type="varchar(255)">
+            <constraints nullable="true" />
+          </column>
+
+          <column name="fecha_inscripcion" type="timestamp">
+            <constraints nullable="true" />
+          </column>
+
+          <column name="payment_id" type="varchar(255)">
+            <constraints nullable="true" />
+          </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

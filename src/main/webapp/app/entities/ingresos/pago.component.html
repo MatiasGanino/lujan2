@@ -1,0 +1,316 @@
+<div class="pago-wrapper">
+
+  <div class="ingreso-header">
+    <div class="paso-indicator">
+      <span class="paso-actual">Paso 3</span>
+      <span class="paso-sep">/</span>
+      <span class="paso-total">3</span>
+    </div>
+    <h1 class="ingreso-titulo">Confirmá tu lugar</h1>
+    <p class="ingreso-subtitulo">Un último paso: el pago asegura tu inscripción</p>
+    <div class="progreso-barra">
+      <div class="progreso-fill" style="width: 90%"></div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center px-3">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <!-- Resumen compacto -->
+      @if (formData) {
+        <div class="seccion-card">
+          <div class="seccion-encabezado">
+            <span class="seccion-icono">🎫</span>
+            <h2 class="seccion-titulo">Tu inscripción</h2>
+          </div>
+          <div class="resumen-persona">
+            <div class="avatar-placeholder">{{ formData.nombre[0] }}{{ formData.apellido[0] }}</div>
+            <div>
+              <div class="nombre-completo">{{ formData.nombre }} {{ formData.apellido }}</div>
+              <div class="detalle-secundario">{{ formData.salida }} · {{ formData.mayorMenor }}</div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Detalle del pago -->
+      <div class="seccion-card">
+        <div class="seccion-encabezado">
+          <span class="seccion-icono">💳</span>
+          <h2 class="seccion-titulo">Detalle del pago</h2>
+        </div>
+
+        <div class="detalle-pago">
+          <div class="linea-pago">
+            <span>Inscripción peregrinación</span>
+            <span class="monto">$XXXX</span>
+          </div>
+          <!-- Podés agregar más conceptos aquí si aplica -->
+          <div class="linea-total">
+            <span>Total</span>
+            <span class="monto-total">$XXXX</span>
+          </div>
+        </div>
+
+        <div class="mp-info">
+          <div class="mp-logo-area">
+            <span class="mp-badge">Pago seguro con</span>
+            <strong class="mp-nombre">Mercado Pago</strong>
+          </div>
+          <p class="mp-descripcion">
+            Serás redirigido al sitio de Mercado Pago para completar el pago con tarjeta,
+            transferencia o efectivo. Una vez confirmado, recibirás tu inscripción por email.
+          </p>
+        </div>
+      </div>
+
+      <!-- Error -->
+      @if (errorMessage) {
+        <div class="alert alert-danger mt-3 rounded-3">
+          ⚠️ {{ errorMessage }}
+        </div>
+      }
+
+      <!-- Acciones -->
+      <div class="acciones-footer">
+        <button
+          type="button"
+          class="btn btn-mp btn-lg w-100"
+          (click)="iniciarPago()"
+          [disabled]="isLoading"
+        >
+          @if (isLoading) {
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            Conectando con Mercado Pago...
+          } @else {
+            Pagar con Mercado Pago →
+          }
+        </button>
+
+        <button type="button" class="btn btn-outline-secondary mt-3 w-100" (click)="volver()" [disabled]="isLoading">
+          ← Volver
+        </button>
+
+        <p class="texto-privacidad mt-3">
+          🔒 El pago se procesa en el entorno seguro de Mercado Pago.
+          No almacenamos datos de tu tarjeta.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .pago-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 60%);
+    padding-bottom: 3rem;
+  }
+
+  .ingreso-header {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 100%);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1.5rem 3rem;
+    margin-bottom: -1.5rem;
+  }
+
+  .paso-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .paso-actual { font-weight: 700; }
+  .paso-sep { opacity: 0.5; }
+
+  .ingreso-titulo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .ingreso-subtitulo {
+    opacity: 0.75;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .progreso-barra {
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .progreso-fill {
+    height: 100%;
+    background: #7ec8e3;
+    border-radius: 2px;
+  }
+
+  .seccion-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .seccion-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eef0f5;
+  }
+
+  .seccion-icono { font-size: 1.2rem; }
+
+  .seccion-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .resumen-persona {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .avatar-placeholder {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .nombre-completo {
+    font-weight: 700;
+    color: #1a3a5c;
+    font-size: 1.05rem;
+  }
+
+  .detalle-secundario {
+    font-size: 0.85rem;
+    color: #8a9ab5;
+    margin-top: 0.15rem;
+  }
+
+  .detalle-pago {
+    border: 1px solid #eef0f5;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+
+  .linea-pago, .linea-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .linea-pago {
+    font-size: 0.95rem;
+    color: #4a5568;
+    border-bottom: 1px solid #eef0f5;
+  }
+
+  .linea-total {
+    background: #f8faff;
+    font-weight: 700;
+    color: #1a3a5c;
+  }
+
+  .monto, .monto-total {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .monto-total { font-size: 1.1rem; }
+
+  .mp-info {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .mp-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .mp-badge {
+    font-size: 0.8rem;
+    color: #8a9ab5;
+  }
+
+  .mp-nombre {
+    color: #009ee3; /* azul Mercado Pago */
+    font-size: 1rem;
+  }
+
+  .mp-descripcion {
+    font-size: 0.85rem;
+    color: #4a5568;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .btn-mp {
+    background: #009ee3;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 2rem;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-mp:hover:not(:disabled) {
+    background: #007dbb;
+    transform: translateY(-1px);
+    color: white;
+  }
+
+  .btn-mp:disabled {
+    opacity: 0.65;
+  }
+
+  .acciones-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .texto-privacidad {
+    font-size: 0.8rem;
+    color: #8a9ab5;
+  }
+</style>

@@ -2,6 +2,7 @@ package com.psmsf.lujanapp;
 
 import com.psmsf.lujanapp.config.ApplicationProperties;
 import com.psmsf.lujanapp.config.CRLFLogConverter;
+import com.psmsf.lujanapp.config.MercadoPagoProperties;
 import jakarta.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -20,7 +21,7 @@ import tech.jhipster.config.DefaultProfileUtil;
 import tech.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
-@EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
+@EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class, MercadoPagoProperties.class })
 public class Lujan2App {
 
     private static final Logger LOG = LoggerFactory.getLogger(Lujan2App.class);

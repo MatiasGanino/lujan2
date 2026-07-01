@@ -1,0 +1,297 @@
+<div class="autorizacion-wrapper">
+
+  <!-- Header -->
+  <div class="ingreso-header">
+    <div class="paso-indicator">
+      <span class="paso-actual">Paso 2</span>
+      <span class="paso-sep">/</span>
+      <span class="paso-total">3</span>
+    </div>
+    <h1 class="ingreso-titulo">Autorización y Condiciones</h1>
+    <p class="ingreso-subtitulo">Leé con atención antes de continuar</p>
+    <div class="progreso-barra">
+      <div class="progreso-fill" style="width: 66%"></div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center px-3">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <!-- Resumen de datos -->
+      @if (formData) {
+        <div class="seccion-card resumen-card">
+          <div class="seccion-encabezado">
+            <span class="seccion-icono">📋</span>
+            <h2 class="seccion-titulo">Confirmá tus datos</h2>
+          </div>
+          <div class="resumen-grid">
+            <div class="resumen-item">
+              <span class="resumen-label">Nombre completo</span>
+              <span class="resumen-valor">{{ formData.nombre }} {{ formData.apellido }}</span>
+            </div>
+            @if (formData.numeroDocumento) {
+              <div class="resumen-item">
+                <span class="resumen-label">Documento</span>
+                <span class="resumen-valor">{{ formData.numeroDocumento }}</span>
+              </div>
+            }
+            @if (formData.email) {
+              <div class="resumen-item">
+                <span class="resumen-label">Email</span>
+                <span class="resumen-valor">{{ formData.email }}</span>
+              </div>
+            }
+            @if (formData.telefono) {
+              <div class="resumen-item">
+                <span class="resumen-label">Teléfono</span>
+                <span class="resumen-valor">{{ formData.telefono }}</span>
+              </div>
+            }
+            <div class="resumen-item">
+              <span class="resumen-label">Tipo de participante</span>
+              <span class="resumen-valor">{{ formData.mayorMenor }}</span>
+            </div>
+            <div class="resumen-item">
+              <span class="resumen-label">Punto de salida</span>
+              <span class="resumen-valor">{{ formData.salida }}</span>
+            </div>
+            <div class="resumen-item">
+              <span class="resumen-label">Forma de pago</span>
+              <span class="resumen-valor">{{ formData.formaPago }}</span>
+            </div>
+          </div>
+          <a class="link-corregir" (click)="volver()" role="button">✏️ Corregir datos</a>
+        </div>
+      }
+
+      <!-- Texto de autorización -->
+      <div class="seccion-card autorizacion-card">
+        <div class="seccion-encabezado">
+          <span class="seccion-icono">📜</span>
+          <h2 class="seccion-titulo">Declaración de participación</h2>
+        </div>
+
+        <div class="texto-autorizacion">
+          <p>
+            Al inscribirme en la Peregrinación, declaro bajo mi propia responsabilidad que me encuentro
+            en condiciones físicas y de salud adecuadas para participar en la actividad.
+          </p>
+          <p>
+            Entiendo que la peregrinación implica una caminata de varios kilómetros en condiciones
+            variables de clima y terreno, y que los organizadores no se hacen responsables por
+            lesiones, accidentes o situaciones de salud derivadas de mi participación voluntaria.
+          </p>
+          <p>
+            En caso de ser menor de edad, confirmo que cuento con la autorización expresa de mis
+            padres o tutores legales, quienes son responsables de mi participación.
+          </p>
+
+          <div class="clausula-destacada">
+            <strong>Datos personales:</strong> Los datos proporcionados serán utilizados
+            exclusivamente para la gestión de la inscripción y comunicaciones relacionadas con
+            la peregrinación, de acuerdo con la Ley 25.326 de Protección de Datos Personales.
+          </div>
+
+          <p>
+            Me comprometo a respetar las indicaciones de los organizadores durante toda la
+            actividad y a mantener una conducta acorde al espíritu de la peregrinación.
+          </p>
+          <p>
+            La inscripción queda confirmada una vez realizado el pago correspondiente.
+            El monto abonado no es reembolsable salvo cancelación de la actividad por parte
+            de los organizadores.
+          </p>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="acciones-footer">
+        <button type="button" class="btn btn-ingreso-primario btn-lg w-100" (click)="aceptarYPagar()">
+          ✅ Acepto y quiero pagar mi lugar
+        </button>
+        <button type="button" class="btn btn-outline-secondary mt-3 w-100" (click)="volver()">
+          ← Volver al formulario
+        </button>
+        <p class="texto-privacidad mt-3">
+          Al continuar, aceptás los términos y condiciones de participación.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .autorizacion-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 60%);
+    padding-bottom: 3rem;
+  }
+
+  .ingreso-header {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 100%);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1.5rem 3rem;
+    margin-bottom: -1.5rem;
+  }
+
+  .paso-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .paso-actual { font-weight: 700; }
+  .paso-sep { opacity: 0.5; }
+
+  .ingreso-titulo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .ingreso-subtitulo {
+    opacity: 0.75;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .progreso-barra {
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .progreso-fill {
+    height: 100%;
+    background: #7ec8e3;
+    border-radius: 2px;
+  }
+
+  .seccion-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .seccion-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eef0f5;
+  }
+
+  .seccion-icono { font-size: 1.2rem; }
+
+  .seccion-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .resumen-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .resumen-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f3f4f8;
+  }
+
+  .resumen-item:last-child {
+    border-bottom: none;
+  }
+
+  .resumen-label {
+    font-size: 0.85rem;
+    color: #8a9ab5;
+    font-weight: 500;
+  }
+
+  .resumen-valor {
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.95rem;
+  }
+
+  .link-corregir {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #2d6a9f;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .texto-autorizacion {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #4a5568;
+  }
+
+  .texto-autorizacion p {
+    margin-bottom: 0.85rem;
+  }
+
+  .clausula-destacada {
+    background: #f0f4ff;
+    border-left: 3px solid #2d6a9f;
+    padding: 0.75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+    color: #1a3a5c;
+  }
+
+  .acciones-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .btn-ingreso-primario {
+    background: linear-gradient(135deg, #1a6b3a, #27a85a);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.85rem 2rem;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .btn-ingreso-primario:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    color: white;
+  }
+
+  .texto-privacidad {
+    font-size: 0.8rem;
+    color: #8a9ab5;
+    margin-top: 0.85rem;
+  }
+</style>
