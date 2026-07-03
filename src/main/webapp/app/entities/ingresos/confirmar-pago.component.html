@@ -1,0 +1,239 @@
+<div class="confirmar-wrapper">
+  <!-- ────────── VERIFICANDO ────────── -->
+  @if (estado === 'verificando') {
+    <div class="estado-card">
+      <div class="spinner-mp">
+        <div class="spinner-ring"></div>
+      </div>
+      <h2 class="estado-titulo">Verificando tu pago…</h2>
+      <p class="estado-texto">Esto tarda solo un momento.</p>
+    </div>
+  }
+
+  <!-- ────────── APROBADO ────────── -->
+  @if (estado === 'approved') {
+    <div class="estado-card estado-exito">
+      <div class="icono-grande">✅</div>
+      <h2 class="estado-titulo">¡Tu lugar está reservado!</h2>
+      <p class="estado-texto">
+        Tu pago fue confirmado y ya estás inscripto/a en la peregrinación. Si dejaste tu email, recibirás una confirmación en breve.
+      </p>
+      @if (paymentId) {
+        <div class="detalle-pago-id">
+          <span class="label-id">N° de operación</span>
+          <span class="valor-id">{{ paymentId }}</span>
+        </div>
+      }
+      <button class="btn btn-exito mt-4" (click)="volverAlInicio()">Volver al inicio</button>
+    </div>
+  }
+
+  <!-- ────────── PENDIENTE ────────── -->
+  @if (estado === 'pending') {
+    <div class="estado-card estado-pendiente">
+      <div class="icono-grande">⏳</div>
+      <h2 class="estado-titulo">Pago en proceso</h2>
+      <p class="estado-texto">
+        Tu pago está siendo procesado. Esto puede demorar unas horas dependiendo del medio de pago elegido. Una vez acreditado, tu
+        inscripción quedará confirmada automáticamente.
+      </p>
+      @if (paymentId) {
+        <div class="detalle-pago-id">
+          <span class="label-id">N° de operación</span>
+          <span class="valor-id">{{ paymentId }}</span>
+        </div>
+      }
+      <p class="estado-subtexto">Guardá este número por si necesitás hacer una consulta.</p>
+      <button class="btn btn-pendiente mt-4" (click)="volverAlInicio()">Entendido</button>
+    </div>
+  }
+
+  <!-- ────────── FALLIDO ────────── -->
+  @if (estado === 'failure') {
+    <div class="estado-card estado-error">
+      <div class="icono-grande">❌</div>
+      <h2 class="estado-titulo">El pago no se completó</h2>
+      <p class="estado-texto">
+        Tu pago fue rechazado o cancelado. No se realizó ningún cobro. Podés intentarlo de nuevo con otro medio de pago.
+      </p>
+      <div class="acciones-doble">
+        <button class="btn btn-reintentar" (click)="volverAlInicio()">Intentar de nuevo</button>
+      </div>
+    </div>
+  }
+
+  <!-- ────────── ERROR TÉCNICO ────────── -->
+  @if (estado === 'error') {
+    <div class="estado-card estado-error">
+      <div class="icono-grande">⚠️</div>
+      <h2 class="estado-titulo">Algo salió mal</h2>
+      <p class="estado-texto">
+        No pudimos verificar el estado de tu pago en este momento. Si el importe fue debitado, tu inscripción se procesará automáticamente.
+        De lo contrario, podés intentarlo de nuevo.
+      </p>
+      @if (errorDetalle) {
+        <p class="error-tecnico">{{ errorDetalle }}</p>
+      }
+      @if (paymentId) {
+        <div class="detalle-pago-id">
+          <span class="label-id">N° de operación</span>
+          <span class="valor-id">{{ paymentId }}</span>
+        </div>
+      }
+      <button class="btn btn-reintentar mt-3" (click)="volverAlInicio()">Volver al inicio</button>
+    </div>
+  }
+</div>
+
+<style>
+  .confirmar-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  .estado-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+    padding: 3rem 2.5rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    animation: fadeInUp 0.4s ease;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .icono-grande {
+    font-size: 3.5rem;
+    margin-bottom: 1.25rem;
+    line-height: 1;
+  }
+
+  .estado-titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .estado-texto {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  .estado-subtexto {
+    color: #8a9ab5;
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+  }
+
+  .detalle-pago-id {
+    display: inline-flex;
+    flex-direction: column;
+    background: #f3f4f8;
+    border-radius: 8px;
+    padding: 0.6rem 1.25rem;
+    margin-top: 1.25rem;
+    gap: 0.15rem;
+  }
+
+  .label-id {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #8a9ab5;
+    font-weight: 600;
+  }
+
+  .valor-id {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .error-tecnico {
+    font-size: 0.8rem;
+    color: #c0392b;
+    background: #fdf0ef;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    margin-top: 1rem;
+  }
+
+  /* Botones */
+  .btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition:
+      opacity 0.2s,
+      transform 0.15s;
+  }
+  .btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  .btn-exito {
+    background: linear-gradient(135deg, #1a6b3a, #27a85a);
+    color: white;
+  }
+  .btn-pendiente {
+    background: linear-gradient(135deg, #7d5a00, #c9950c);
+    color: white;
+  }
+  .btn-reintentar {
+    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+    color: white;
+  }
+
+  .acciones-doble {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  /* Spinner */
+  .spinner-mp {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .spinner-ring {
+    width: 52px;
+    height: 52px;
+    border: 4px solid #eef0f5;
+    border-top-color: #009ee3;
+    border-radius: 50%;
+    animation: spin 0.85s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

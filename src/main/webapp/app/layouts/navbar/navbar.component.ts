@@ -50,6 +50,10 @@ export default class NavbarComponent implements OnInit {
     });
   }
 
+  isPublicPage(): boolean {
+    return this.router.url.startsWith('/ingreso');
+  }
+
   changeLanguage(languageKey: string): void {
     this.stateStorageService.storeLocale(languageKey);
     this.translateService.use(languageKey);

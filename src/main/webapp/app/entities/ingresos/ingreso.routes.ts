@@ -13,6 +13,10 @@ const ingresoRoutes: Routes = [
     path: 'pago',
     loadComponent: () => import('./pago.component').then(m => m.PagoComponent),
   },
+  {
+    path: 'confirmacion', // ← MercadoPago redirige acá con ?payment_id=X&status=approved
+    loadComponent: () => import('./confirmar-pago.component').then(m => m.ConfirmarPagoComponent),
+  },
 ];
 
 export default ingresoRoutes;

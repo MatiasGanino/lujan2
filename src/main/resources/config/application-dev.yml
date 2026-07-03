@@ -99,7 +99,7 @@ jhipster:
 # application:
 mercadopago:
   access-token: APP_USR-7609685818736662-063009-42929aa36001a84bf2c75c9601795a78-3508293998
-  back-url-success: https://ngrok-free.app
-  back-url-failure: https://ngrok-free.app
-  back-url-pending: https://ngrok-free.app
+  back-url-success: https://464b-2800-810-845-f1-5978-78e7-6054-7cd0.ngrok-free.app/ingreso/confirmacion
+  back-url-failure: https://464b-2800-810-845-f1-5978-78e7-6054-7cd0.ngrok-free.app/ingreso/confirmacion
+  back-url-pending: https://464b-2800-810-845-f1-5978-78e7-6054-7cd0.ngrok-free.app/ingreso/confirmacion
   # webhook-secret: (opcional, para verificar firma del webhook en producción)

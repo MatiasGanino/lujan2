@@ -1,5 +1,4 @@
 <div class="pago-wrapper">
-
   <div class="ingreso-header">
     <div class="paso-indicator">
       <span class="paso-actual">Paso 3</span>
@@ -15,7 +14,6 @@
 
   <div class="d-flex justify-content-center px-3">
     <div class="col-12 col-md-8 col-lg-6">
-
       <!-- Resumen compacto -->
       @if (formData) {
         <div class="seccion-card">
@@ -43,12 +41,12 @@
         <div class="detalle-pago">
           <div class="linea-pago">
             <span>Inscripción peregrinación</span>
-            <span class="monto">$XXXX</span>
+            <span class="monto">$5000</span>
           </div>
           <!-- Podés agregar más conceptos aquí si aplica -->
           <div class="linea-total">
             <span>Total</span>
-            <span class="monto-total">$XXXX</span>
+            <span class="monto-total">$5000</span>
           </div>
         </div>
 
@@ -58,27 +56,20 @@
             <strong class="mp-nombre">Mercado Pago</strong>
           </div>
           <p class="mp-descripcion">
-            Serás redirigido al sitio de Mercado Pago para completar el pago con tarjeta,
-            transferencia o efectivo. Una vez confirmado, recibirás tu inscripción por email.
+            Serás redirigido al sitio de Mercado Pago para completar el pago con tarjeta, transferencia o efectivo. Una vez confirmado,
+            recibirás tu inscripción por email.
           </p>
         </div>
       </div>
 
       <!-- Error -->
       @if (errorMessage) {
-        <div class="alert alert-danger mt-3 rounded-3">
-          ⚠️ {{ errorMessage }}
-        </div>
+        <div class="alert alert-danger mt-3 rounded-3">⚠️ {{ errorMessage }}</div>
       }
 
       <!-- Acciones -->
       <div class="acciones-footer">
-        <button
-          type="button"
-          class="btn btn-mp btn-lg w-100"
-          (click)="iniciarPago()"
-          [disabled]="isLoading"
-        >
+        <button type="button" class="btn btn-mp btn-lg w-100" (click)="iniciarPago()" [disabled]="isLoading">
           @if (isLoading) {
             <span class="spinner-border spinner-border-sm me-2" role="status"></span>
             Conectando con Mercado Pago...
@@ -87,16 +78,10 @@
           }
         </button>
 
-        <button type="button" class="btn btn-outline-secondary mt-3 w-100" (click)="volver()" [disabled]="isLoading">
-          ← Volver
-        </button>
+        <button type="button" class="btn btn-outline-secondary mt-3 w-100" (click)="volver()" [disabled]="isLoading">← Volver</button>
 
-        <p class="texto-privacidad mt-3">
-          🔒 El pago se procesa en el entorno seguro de Mercado Pago.
-          No almacenamos datos de tu tarjeta.
-        </p>
+        <p class="texto-privacidad mt-3">🔒 El pago se procesa en el entorno seguro de Mercado Pago. No almacenamos datos de tu tarjeta.</p>
       </div>
-
     </div>
   </div>
 </div>
@@ -120,7 +105,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     padding: 0.25rem 0.85rem;
     font-size: 0.8rem;
@@ -129,8 +114,12 @@
     margin-bottom: 1rem;
   }
 
-  .paso-actual { font-weight: 700; }
-  .paso-sep { opacity: 0.5; }
+  .paso-actual {
+    font-weight: 700;
+  }
+  .paso-sep {
+    opacity: 0.5;
+  }
 
   .ingreso-titulo {
     font-size: 1.7rem;
@@ -148,7 +137,7 @@
   .progreso-barra {
     width: 200px;
     height: 4px;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 2px;
     margin: 0 auto;
     overflow: hidden;
@@ -163,7 +152,7 @@
   .seccion-card {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
     padding: 1.5rem;
     margin-top: 1.5rem;
   }
@@ -177,7 +166,9 @@
     border-bottom: 1px solid #eef0f5;
   }
 
-  .seccion-icono { font-size: 1.2rem; }
+  .seccion-icono {
+    font-size: 1.2rem;
+  }
 
   .seccion-titulo {
     font-size: 1rem;
@@ -227,7 +218,8 @@
     margin-bottom: 1.25rem;
   }
 
-  .linea-pago, .linea-total {
+  .linea-pago,
+  .linea-total {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -246,11 +238,14 @@
     color: #1a3a5c;
   }
 
-  .monto, .monto-total {
+  .monto,
+  .monto-total {
     font-variant-numeric: tabular-nums;
   }
 
-  .monto-total { font-size: 1.1rem; }
+  .monto-total {
+    font-size: 1.1rem;
+  }
 
   .mp-info {
     background: #f0f7ff;
@@ -290,7 +285,9 @@
     font-weight: 700;
     font-size: 1rem;
     padding: 0.9rem 2rem;
-    transition: background 0.2s, transform 0.15s;
+    transition:
+      background 0.2s,
+      transform 0.15s;
     letter-spacing: 0.02em;
   }
 
