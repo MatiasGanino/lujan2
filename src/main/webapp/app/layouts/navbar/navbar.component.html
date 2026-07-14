@@ -1,12 +1,12 @@
-<nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-primary" *ngIf="!isPublicPage()">
-  <div class="container-fluid">
+<nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-primary sidebar-nav" *ngIf="!isPublicPage()">
+  <div class="sidebar-inner">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <span class="logo-img"></span>
       <span class="navbar-title" jhiTranslate="global.title">Lujan2</span>
       <span class="navbar-version">{{ version }}</span>
     </a>
     <a
-      class="navbar-toggler d-lg-none"
+      class="navbar-toggler d-md-none"
       href="javascript:void(0);"
       data-toggle="collapse"
       data-target="#navbarResponsive"
@@ -18,7 +18,7 @@
       <fa-icon icon="bars"></fa-icon>
     </a>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed()">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav flex-column">
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
             <span>
